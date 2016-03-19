@@ -1,4 +1,0 @@
-
-include ':image-processor-utils', ':image-processor-service'
-include ':image-processor-api'
-

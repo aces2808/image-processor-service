@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../image-processor.iml" filepath="$PROJECT_DIR$/../image-processor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../image-processor-api/image-processor-api.iml" filepath="$PROJECT_DIR$/../image-processor-api/image-processor-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image-processor-api/image-processor-api.iml" filepath="$PROJECT_DIR$/image-processor-api/image-processor-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/image-processor-service.iml" filepath="$PROJECT_DIR$/image-processor-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../image-processor-utils/image-processor-utils.iml" filepath="$PROJECT_DIR$/../image-processor-utils/image-processor-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/image-processor-utils/image-processor-utils.iml" filepath="$PROJECT_DIR$/image-processor-utils/image-processor-utils.iml" />
     </modules>
   </component>
 </project>

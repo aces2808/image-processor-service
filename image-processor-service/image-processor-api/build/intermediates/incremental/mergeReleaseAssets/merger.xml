@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/main/assets"/></dataSet><dataSet config="release"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/release/assets"/></dataSet></merger>
