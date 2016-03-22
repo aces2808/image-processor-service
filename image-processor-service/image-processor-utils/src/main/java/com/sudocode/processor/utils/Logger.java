@@ -16,7 +16,6 @@ public final class Logger {
     private boolean debuggable = true;
 
     /**
-     * <p/>
      * Creates new instance of logging.
      *
      * @param classType Class {@inheritDoc}
@@ -26,7 +25,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Creates new instance of TAG, uses default TAG if empty.
      */
     private Logger(final String TAG) {
@@ -36,7 +34,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Synchronized central logging facility
      *
      * @param classType Class {@inheritDoc}
@@ -47,7 +44,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints debug-level logs
      *
      * @param message Describes the debug message
@@ -57,7 +53,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints debug-level logs
      *
      * @param TAG     Uses specified TAG otherwise default class
@@ -74,7 +69,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints info-level logs
      *
      * @param message Describes the info message
@@ -84,7 +78,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints info-level logs
      *
      * @param TAG     Uses specified TAG otherwise default class
@@ -101,7 +94,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints warning-level logs
      *
      * @param message Describes the warning message
@@ -111,7 +103,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints warning-level logs
      *
      * @param TAG     Uses specified TAG otherwise default class
@@ -128,7 +119,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints verbose-level logs
      *
      * @param message Describes the verbose message
@@ -138,7 +128,6 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints verbose-level logs
      *
      * @param TAG     Uses specified TAG otherwise default class
@@ -155,21 +144,21 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Prints error-level logs
      *
      * @param message Describes the error message
+     * @param e       Throws error message.
      */
     public void error(final String message, final Throwable e) {
         Log.e(TAG, message, e);
     }
 
     /**
-     * <p/>
      * Prints error-level logs
      *
      * @param TAG     Uses specified TAG otherwise default class
      * @param message Describes the error message
+     * @param e       Throws error message.
      */
     public void error(final String TAG, String message, Throwable e) {
         if (this.debuggable && DEBUGGABLE) {
@@ -182,16 +171,18 @@ public final class Logger {
     }
 
     /**
-     * <p/>
      * Returns the current status of the logger, true if enable otherwise false.
+     *
+     * @return True if debuggable else false.
      */
     public boolean isDebuggable() {
         return debuggable;
     }
 
     /**
-     * <p/>
      * Sets the status for enabling printing of logs.
+     *
+     * @param debuggable {@link Boolean}
      */
     public void setDebuggable(boolean debuggable) {
         this.debuggable = debuggable;

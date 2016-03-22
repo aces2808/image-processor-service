@@ -1,15 +1,12 @@
 package com.sudocode.processor.service.impl;
 
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.sudocode.image.processor.service.ImageProcessorService;
 import com.sudocode.processor.utils.Logger;
 
-import org.opencv.android.CameraBridgeViewBase.CvCameraViewFrame;
 import org.opencv.android.OpenCVLoader;
-import org.opencv.android.Utils;
 import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
@@ -17,9 +14,7 @@ import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 ;
 
@@ -29,10 +24,8 @@ import java.io.InputStream;
 public class ImageProcessorImpl implements ImageProcessorService {
 
     private static final Logger logger = Logger.getLogger(ImageProcessorImpl.class);
-    private CvCameraViewFrame inputFrame;
-    private Mat gradx, grady, absgradx, absgrady;
     private Mat mSource;
-    //private Mat mDest;
+    private Mat mDest;
     private Bitmap mBitmap;
     private static ImageProcessorService instance;
 
@@ -42,7 +35,9 @@ public class ImageProcessorImpl implements ImageProcessorService {
 
     public ImageProcessorImpl() {
         if (!OpenCVLoader.initDebug()) {
+            logger.debug("image-processor : cannot load processor");
         } else {
+            logger.debug("image-processor : loaded processor");
         }
     }
 
@@ -53,54 +48,24 @@ public class ImageProcessorImpl implements ImageProcessorService {
     }
 
     @Override
-    public Bundle processImage(File mFile) throws IOException {
+    public Bundle processImage(Bundle mBundle) throws IOException {
 
-        InputStream mInputStream = new FileInputStream(mFile);
-        mBitmap = BitmapFactory.decodeStream(mInputStream);
+        Bundle mUpdatedBundle = new Bundle();
 
-        mBitmap = Bitmap.createScaledBitmap(mBitmap, 100, 100, true);
-        mSource = new Mat();
+        File mFile = (File) mBundle.getSerializable(IMAGE_SRC);
+        int mDepth = mBundle.getInt(IMAGE_DEPTH, IMAGE_DEPTH_08);
 
-        Utils.bitmapToMat(mBitmap, mSource);
+        mSource = Imgcodecs.imread(mFile.getAbsolutePath(), Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+        mDest = new Mat(mSource.rows(), mSource.cols(), mSource.type());
 
-        Imgproc.cvtColor(mSource, mSource, Imgproc.COLOR_RGBA2GRAY);
-        mSource.convertTo(mSource, CvType.CV_32F);
-        Core.transpose(mSource, mSource);
-        Core.flip(mSource, mSource, 1);
+        Imgproc.Sobel(mSource, mDest, mDepth, 1, 1);
+        Core.convertScaleAbs(mDest, mDest, 10, 0);
+        Imgproc.cvtColor(mDest, mDest, Imgproc.COLOR_GRAY2BGRA, 4);
+        Imgcodecs.imwrite(mFile.getAbsolutePath(), mDest);
 
-        logger.debug("image-processor : get path : " + mFile.getCanonicalPath());
+        mUpdatedBundle.putSerializable(IMAGE_DEST, mFile);
 
-        Imgcodecs.imwrite(mFile.getAbsolutePath(), mSource);
-
-        //InputStream mInputStream2 = new FileInputStream(ResourcesCompat.getDrawable(R.drawable.fungal));
-
-
-        //Bitmap mBitmap2 = BitmapFactory.decodeResource(Resources.getSystem().getDrawable())
-
-        // Get file reference
-        // Follow codes above and add logic to check if file is already processed.
-        // Compare 2 image
-
-//        InputStream mInputStream2 = new FileInputStream(new File(<file location>));
-//        mBitmap2 = BitmapFactory.decodeStream(mInputStream);
-//
-//        mBitmap2 = Bitmap.createScaledBitmap(mBitmap2, 100, 100, true);
-//        mSource2 = new Mat();
-//
-//        Utils.bitmapToMat(mBitmap2, mSource2);
-//
-//        Imgproc.cvtColor(mSource2, mSource2, Imgproc.COLOR_RGBA2GRAY);
-//        mSource.convertTo(mSource, CvType.CV_32F);
-
-        return null;
+        return mUpdatedBundle;
     }
 
-    @Override
-    public void loadImageProc() {
-        if (!OpenCVLoader.initDebug()) {
-            logger.debug("image-processor : cannot load OpenCV");
-        } else {
-            logger.debug("image-processor : loaded OpenCV");
-        }
-    }
 }

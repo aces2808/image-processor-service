@@ -10,8 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/image-processor-api" />
-            <option value="$PROJECT_DIR$/image-processor-utils" />
           </set>
         </option>
       </GradleProjectSettings>
