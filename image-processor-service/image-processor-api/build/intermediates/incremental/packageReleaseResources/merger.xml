@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main$Generated" generated="true"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/main/res"/><source path="/appl/image-processor/image-processor-service/image-processor-api/build/generated/res/rs/release"/><source path="/appl/image-processor/image-processor-service/image-processor-api/build/generated/res/resValues/release"/></dataSet><dataSet config="release$Generated" generated="true"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/release/res"/></dataSet><dataSet config="main" generated-set="main$Generated"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/main/res"><file path="/appl/image-processor/image-processor-service/image-processor-api/src/main/res/values/attrs.xml" qualifiers=""><declare-styleable name="CameraBridgeViewBase">
-       <attr format="boolean" name="show_fps"/>
-       <attr format="integer" name="camera_id">
-          <enum name="any" value="-1"/>
-          <enum name="back" value="99"/>
-          <enum name="front" value="98"/>
-       </attr>
-    </declare-styleable></file></source><source path="/appl/image-processor/image-processor-service/image-processor-api/build/generated/res/rs/release"/><source path="/appl/image-processor/image-processor-service/image-processor-api/build/generated/res/resValues/release"/></dataSet><dataSet config="release" generated-set="release$Generated"><source path="/appl/image-processor/image-processor-service/image-processor-api/src/release/res"/></dataSet><mergedItems><configuration qualifiers=""><declare-styleable name="CameraBridgeViewBase"><attr format="boolean" name="show_fps"/><attr format="integer" name="camera_id"><enum name="any" value="-1"/><enum name="back" value="99"/><enum name="front" value="98"/></attr></declare-styleable></configuration></mergedItems></merger>
