@@ -8,7 +8,6 @@ import com.sudocode.processor.utils.Logger;
 
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -26,7 +25,6 @@ public class ImageProcessorImpl implements ImageProcessorService {
     private static final Logger logger = Logger.getLogger(ImageProcessorImpl.class);
     private Mat mSource;
     private Mat mDest;
-    private Bitmap mBitmap;
     private static ImageProcessorService instance;
 
     public static ImageProcessorService getInstance() {
