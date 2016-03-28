@@ -20,4 +20,10 @@ public interface ImageProcessorService extends ImageConstants {
      */
     Bundle processImage(Bundle mBundle) throws IOException;
 
+
+    /**
+     * @param mBundle
+     * @return File {@link File}
+     */
+    File findMatch(Bundle mBundle) throws IOException;
 }

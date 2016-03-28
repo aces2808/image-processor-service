@@ -1,6 +1,5 @@
 package com.sudocode.processor.service.impl;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import com.sudocode.image.processor.service.ImageProcessorService;
@@ -64,6 +63,12 @@ public class ImageProcessorImpl implements ImageProcessorService {
         mUpdatedBundle.putSerializable(IMAGE_DEST, mFile);
 
         return mUpdatedBundle;
+    }
+
+    @Override
+    public File findMatch(Bundle mBundle) throws IOException {
+
+        return null;
     }
 
 }
